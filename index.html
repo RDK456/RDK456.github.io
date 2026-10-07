@@ -3,232 +3,530 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dhanush Kumar — Portfolio</title>
-<meta name="description" content="R Dhanush Kumar — Software Engineer at CGI, ServiceNow CSA & CAD certified, building GenAI-powered ITSM automation.">
+<title>R Dhanush Kumar</title>
+<meta name="description" content="R Dhanush Kumar, Software Engineer at CGI. ServiceNow CSA and CAD certified, building GenAI-powered ITSM automation, plus native Windows and Android tools.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0f14; --surface: #151922; --border: #232a36;
-    --text: #e7ebf2; --muted: #8b95a7; --accent: #ff7a45;
+    --paper: #edf0ea; --card: #f8faf6; --line: #c9d1c6;
+    --ink: #16262b; --soft: #4f6166; --petrol: #0e6b63; --amber: #c98a06;
+    --on-petrol: #f8faf6;
   }
-  @media (prefers-color-scheme: light) {
-    :root { --bg: #f7f6f2; --surface: #fff; --border: #e3e0d8; --text: #1a1c22; --muted: #5f6573; --accent: #d9531e; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0f1a1d; --card: #15252a; --line: #26393e;
+      --ink: #e3ebe6; --soft: #93a7a4; --petrol: #3fb8a8; --amber: #f2b53a;
+      --on-petrol: #0f1a1d;
+    }
   }
   * { box-sizing: border-box; margin: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-ui, sans-serif; }
-  a { color: inherit; }
-  main { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-  h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
-  b { color: var(--text); font-weight: 500; }
+  body { background: var(--paper); color: var(--ink); font: 17px/1.6 "Bricolage Grotesque", system-ui, sans-serif; font-variation-settings: "opsz" 14; }
+  a { color: var(--petrol); }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { line-height: 1.05; font-variation-settings: "opsz" 96, "wdth" 75; font-weight: 800; letter-spacing: -.01em; }
+  h2 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 8px; }
+  .lede { color: var(--soft); max-width: 60ch; margin-bottom: 32px; }
+  section { padding: 88px 0 0; }
 
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
-  nav .links a { margin-left: 20px; text-decoration: none; color: var(--muted); font-size: 15px; }
-  nav .links a:hover { color: var(--text); }
-  .logo { font-family: "Space Grotesk"; font-weight: 700; text-decoration: none; }
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; gap: 24px; height: 56px; }
+  nav .me { white-space: nowrap; font-weight: 700; text-decoration: none; color: var(--ink); margin-right: auto; }
+  nav a:not(.me) { color: var(--soft); text-decoration: none; font-size: 15px; }
+  nav a:not(.me):hover { color: var(--ink); }
 
-  .hero { display: flex; gap: 32px; align-items: center; padding: 64px 0 40px; }
-  .hero img { width: 128px; height: 128px; border-radius: 50%; border: 3px solid var(--accent); flex-shrink: 0; }
-  .hero .role { color: var(--accent); font-weight: 500; letter-spacing: .02em; }
-  .hero h1 { font-size: clamp(36px, 6vw, 58px); }
-  .hero p { color: var(--muted); max-width: 600px; margin: 12px 0 24px; font-size: 17px; }
-  .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; margin: 0 10px 10px 0; border: 1px solid var(--border); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  /* buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 16px; font-weight: 600; padding: 11px 20px; border-radius: 999px; border: 1.5px solid var(--ink); background: none; color: var(--ink); text-decoration: none; cursor: pointer; }
+  .btn.solid { background: var(--petrol); border-color: var(--petrol); color: var(--on-petrol); }
+  .btn:hover { transform: translateY(-1px); }
 
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 64px; }
-  .stats div { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
-  .stats strong { display: block; font-family: "Space Grotesk"; font-size: 30px; color: var(--accent); }
-  .stats span { color: var(--muted); font-size: 14px; }
+  /* hero */
+  .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding: 56px 0 24px; min-height: calc(100vh - 56px); }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--soft); margin-bottom: 20px; }
+  .status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px color-mix(in srgb, var(--amber) 25%, transparent); }
+  .hero h1 { font-size: clamp(64px, 11vw, 148px); line-height: .86; margin-bottom: 24px; }
+  .hero p { font-size: 20px; color: var(--soft); max-width: 34ch; margin-bottom: 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .updated { font-size: 14px; color: var(--soft); }
 
-  section { padding: 48px 0; border-top: 1px solid var(--border); }
-  section > h2 { font-size: 28px; margin-bottom: 28px; }
-  section > h2::before { content: "// "; color: var(--accent); }
-  .muted { color: var(--muted); }
+  /* virtual agent */
+  .agent { background: var(--card); border: 1.5px solid var(--ink); border-radius: 22px; box-shadow: 8px 8px 0 var(--petrol); display: flex; flex-direction: column; height: 520px; overflow: hidden; }
+  .agent header { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .agent header .badge { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--petrol); color: var(--on-petrol); font-weight: 700; font-size: 14px; }
+  .agent header b { display: block; font-size: 15px; }
+  .agent header small { color: var(--soft); font-size: 13px; }
+  .log { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 15.5px; line-height: 1.5; }
+  .msg.bot { background: var(--paper); border-bottom-left-radius: 4px; align-self: flex-start; }
+  .msg.you { background: var(--petrol); color: var(--on-petrol); border-bottom-right-radius: 4px; align-self: flex-end; }
+  .msg ul { padding-left: 18px; margin-top: 4px; }
+  .typing span { display: inline-block; width: 6px; height: 6px; margin: 0 2px; border-radius: 50%; background: var(--soft); animation: blink 1s infinite; }
+  .typing span:nth-child(2) { animation-delay: .15s; } .typing span:nth-child(3) { animation-delay: .3s; }
+  @keyframes blink { 50% { opacity: .2; } }
+  .chips { display: flex; gap: 8px; padding: 0 18px 12px; overflow-x: auto; scrollbar-width: none; }
+  .chips button { flex-shrink: 0; font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--petrol); color: var(--petrol); background: none; cursor: pointer; }
+  .chips button:hover { background: var(--petrol); color: var(--on-petrol); }
+  .ask { display: flex; gap: 8px; padding: 12px 18px 16px; border-top: 1px solid var(--line); }
+  .ask input { flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+  .ask button { padding: 8px 16px; font-size: 15px; }
 
-  .job { padding: 0 0 32px 24px; border-left: 2px solid var(--border); position: relative; }
-  .job::before { content: ""; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
-  .job h3 { font-size: 21px; }
-  .job .when { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
-  .job h4 { font-size: 15px; margin: 16px 0 6px; color: var(--accent); font-weight: 500; }
-  .job ul { color: var(--muted); font-size: 15px; padding-left: 18px; }
-  .job li { margin-bottom: 4px; }
+  /* career line */
+  .career { position: relative; height: 64px; margin: 8px 0 40px; border-top: 1.5px solid var(--ink); }
+  .career .seg { position: absolute; top: -7px; height: 12px; border-radius: 6px; background: var(--petrol); }
+  .career .seg.edu { background: var(--line); }
+  .career .seg.intern { background: var(--amber); }
+  .career .lbl { position: absolute; top: 14px; font-size: 13px; color: var(--soft); white-space: nowrap; }
+  .career .lbl b { color: var(--ink); display: block; font-size: 14px; }
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; transition: transform .15s, border-color .15s; }
-  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-  .card h3 { font-size: 20px; margin-bottom: 8px; }
-  .card p { color: var(--muted); font-size: 15px; }
-  .card ul { color: var(--muted); font-size: 14px; padding-left: 18px; margin: 10px 0 0; flex: 1; }
-  .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-size: 14px; }
-  .tag { font-size: 12px; padding: 3px 10px; border-radius: 99px; border: 1px solid var(--border); color: var(--muted); }
-  .meta a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  /* experience tabs */
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .tabs button { font: inherit; font-size: 16px; font-weight: 600; padding: 9px 18px; border-radius: 999px; border: 1.5px solid var(--line); background: none; color: var(--soft); cursor: pointer; }
+  .tabs button[aria-selected="true"] { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+  .panel { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
+  .panel[hidden] { display: none; }
+  .panel h3 { font-size: 30px; margin-bottom: 4px; }
+  .panel .when { color: var(--soft); font-size: 15px; margin-bottom: 16px; }
+  .panel ul { padding-left: 20px; }
+  .panel li { margin-bottom: 8px; max-width: 62ch; }
+  .meters { list-style: none; padding: 0 !important; align-self: start; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px !important; }
+  .meters li { margin-bottom: 16px; }
+  .meters li:last-child { margin-bottom: 0; }
+  .meters .row { display: flex; justify-content: space-between; font-size: 15px; }
+  .meters .row b { font-variation-settings: "opsz" 96, "wdth" 75; font-size: 22px; color: var(--petrol); font-variant-numeric: tabular-nums; }
+  .bar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 4px; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--petrol); border-radius: 4px; transition: width .8s cubic-bezier(.2,.8,.2,1); }
 
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .cols h3 { font-size: 16px; margin-bottom: 12px; color: var(--muted); font-weight: 500; }
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chips span { background: var(--surface); border: 1px solid var(--border); padding: 6px 14px; border-radius: 8px; font-size: 15px; }
-  .chips.cert span { border-color: var(--accent); }
+  /* projects */
+  .filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .filters button { font: inherit; font-size: 15px; padding: 7px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: none; color: var(--soft); cursor: pointer; }
+  .filters button[aria-pressed="true"] { border-color: var(--petrol); color: var(--petrol); font-weight: 600; }
+  .proj { border-top: 1.5px solid var(--ink); }
+  .proj:last-child { border-bottom: 1.5px solid var(--ink); }
+  .proj[hidden] { display: none; }
+  .proj summary { list-style: none; display: grid; grid-template-columns: 1fr auto 32px; gap: 20px; align-items: center; padding: 22px 4px; cursor: pointer; }
+  .proj summary::-webkit-details-marker { display: none; }
+  .proj summary h3 { font-size: clamp(28px, 4vw, 44px); }
+  .proj summary p { color: var(--soft); font-size: 16px; margin-top: 4px; }
+  .proj summary:hover h3 { color: var(--petrol); }
+  .plat { display: flex; gap: 6px; }
+  .plat span { font-size: 13px; padding: 3px 10px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--soft); }
+  .plus { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font-size: 20px; transition: transform .2s; }
+  .proj[open] .plus { transform: rotate(45deg); background: var(--petrol); border-color: var(--petrol); color: var(--on-petrol); }
+  .proj .body { padding: 0 4px 26px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+  .proj .body ul { padding-left: 20px; color: var(--soft); }
+  .proj .stack { font-size: 15px; color: var(--soft); margin-top: 10px; }
 
-  #contact p { margin-bottom: 20px; }
-  footer { padding: 40px 0 60px; color: var(--muted); font-size: 14px; text-align: center; }
+  /* skills */
+  .skillgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .skillgrid h3 { font-size: 24px; margin-bottom: 12px; }
+  .skillgrid ul { list-style: none; padding: 0; }
+  .skillgrid li { padding: 7px 0; border-bottom: 1px solid var(--line); }
 
-  @media (max-width: 720px) {
-    .hero { flex-direction: column; align-items: flex-start; padding: 32px 0 32px; }
-    .stats { grid-template-columns: 1fr 1fr; }
-    .cols { grid-template-columns: 1fr; }
-    nav .links a { margin-left: 12px; font-size: 14px; }
+  /* request form */
+  .request { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; padding-bottom: 96px; }
+  .request aside p { color: var(--soft); margin-bottom: 20px; }
+  .request aside a { display: block; margin-bottom: 8px; font-weight: 600; }
+  form.ticket { background: var(--card); border: 1.5px solid var(--ink); border-radius: 22px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ticket label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; }
+  .ticket .full { grid-column: 1 / -1; }
+  .ticket input, .ticket select, .ticket textarea { font: inherit; font-size: 16px; font-weight: 400; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; resize: vertical; }
+  .ticket .foot { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .ticket .result { font-size: 15px; color: var(--soft); }
+  .ticket .result.ok { color: var(--petrol); font-weight: 600; }
+  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--soft); font-size: 14px; }
+
+  @media (max-width: 860px) {
+    .hero, .panel, .request { grid-template-columns: 1fr; }
+    .hero { min-height: 0; gap: 36px; }
+    .agent { height: 460px; box-shadow: 5px 5px 0 var(--petrol); }
+    .skillgrid { grid-template-columns: 1fr; }
+    nav a.opt { display: none; }
+    .career .lbl { font-size: 12px; } .career .lbl.edu, .career .lbl.mid { display: none; }
+  }
+  @media (max-width: 560px) {
+    form.ticket { grid-template-columns: 1fr; padding: 20px; }
+    .proj summary { grid-template-columns: 1fr 32px; }
+    .proj summary .plat { display: none; }
+    .proj .body { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
   }
 </style>
 </head>
 <body>
-<main>
-  <nav>
-    <a class="logo" href="#">dk.</a>
-    <div class="links"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
-  </nav>
+<nav>
+  <div class="wrap">
+    <a class="me" href="#top">R Dhanush Kumar</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a class="opt" href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
+<main class="wrap" id="top">
   <header class="hero">
-    <img src="https://avatars.githubusercontent.com/u/67866546?v=4" alt="R Dhanush Kumar">
     <div>
-      <div class="role">Software Engineer · ServiceNow · Bangalore</div>
-      <h1>R Dhanush Kumar</h1>
-      <p>B.Tech (CSE) graduate from IIIT Dharwad with 4+ years in ITSM and ServiceNow development. CSA &amp; CAD certified — I build integrations, workflow automation, RPA and GenAI solutions with Now Assist, Skill Kit and Virtual Agent. On the side, I ship native Windows and Android tools.</p>
-      <a class="btn primary" href="Dhanush-Kumar-Resume.pdf" download>Download resume</a>
-      <a class="btn" href="#contact">Get in touch</a>
-      <a class="btn" href="https://www.linkedin.com/in/dhanush-kumar-3b218019a/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/RDK456" target="_blank" rel="noopener">GitHub</a>
+      <div class="status">Software Engineer at CGI, Bangalore</div>
+      <h1>R Dhanush<br>Kumar</h1>
+      <p>I automate IT service management on ServiceNow with GenAI, and build native Windows and Android tools on the side.</p>
+      <div class="actions">
+        <a class="btn solid" href="Dhanush-Kumar-Resume.pdf" download>Download resume</a>
+        <a class="btn" href="#contact">Open a request</a>
+        <span class="updated" id="cv-date"></span>
+      </div>
+    </div>
+
+    <div class="agent" aria-label="Ask about Dhanush">
+      <header>
+        <span class="badge" aria-hidden="true">DK</span>
+        <div><b>Dhanush's virtual agent</b><small>Answers from his CV, instantly</small></div>
+      </header>
+      <div class="log" id="log" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <form class="ask" id="ask">
+        <input id="q" placeholder="Ask about experience, skills, projects…" autocomplete="off" aria-label="Your question" maxlength="200">
+        <button class="btn solid" type="submit">Ask</button>
+      </form>
     </div>
   </header>
 
-  <div class="stats">
-    <div><strong>4+</strong><span>years in ServiceNow &amp; ITSM</span></div>
-    <div><strong>30–50%</strong><span>operational efficiency gains</span></div>
-    <div><strong>~35%</strong><span>lower MTTR with GenAI Virtual Agent</span></div>
-    <div><strong>7</strong><span>certifications</span></div>
-  </div>
-
   <section id="experience">
     <h2>Experience</h2>
+    <p class="lede">4+ years in ITSM and ServiceNow at CGI, delivering automation that raised operational efficiency by 30–50%. Pick a client to see what changed.</p>
 
-    <div class="job">
-      <h3>Software Engineer — CGI, Bengaluru</h3>
-      <div class="when">July 2022 – Present</div>
+    <div class="career" aria-hidden="true">
+      <!-- axis 2018 → 2026.8 -->
+      <div class="seg edu" style="left:0;width:45.5%"></div>
+      <div class="lbl edu" style="left:0"><b>IIIT Dharwad</b>B.Tech CSE, 2018–22</div>
+      <div class="seg intern" style="left:45.5%;width:5.7%"></div>
+      <div class="lbl mid" style="left:40%"><b>Sony</b>Intern, 2022</div>
+      <div class="seg" style="left:51.1%;width:48.9%"></div>
+      <div class="lbl" style="right:0;text-align:right"><b>CGI</b>Software Engineer, Jul 2022–now</div>
+    </div>
 
-      <h4>TotalEnergies</h4>
-      <ul>
-        <li>Implemented <b>Now Assist Skill Kit</b> to extend ITSM with GenAI-powered workflows across Incident, Request and Knowledge Management.</li>
-        <li>Designed custom AI skills for intent detection, ticket summarization and auto-solutions — <b>~30–40% auto-resolution</b> of L1 tickets.</li>
-        <li>Integrated Virtual Agent with GenAI services, cutting <b>MTTR by ~35%</b> and lifting first contact resolution by ~25%.</li>
-        <li>Built AI enrichment pipelines with contextual search, improving classification and routing accuracy by ~25%.</li>
-        <li>Optimized ITSM and AI execution flows for <b>~20% cost reduction</b> and better SLA compliance.</li>
-      </ul>
+    <div class="tabs" role="tablist" aria-label="Clients and roles">
+      <button role="tab" aria-selected="true" aria-controls="p-total" id="t-total">TotalEnergies</button>
+      <button role="tab" aria-selected="false" aria-controls="p-bell" id="t-bell" tabindex="-1">Bell</button>
+      <button role="tab" aria-selected="false" aria-controls="p-valmet" id="t-valmet" tabindex="-1">Valmet</button>
+      <button role="tab" aria-selected="false" aria-controls="p-more" id="t-more" tabindex="-1">More CGI projects</button>
+      <button role="tab" aria-selected="false" aria-controls="p-sony" id="t-sony" tabindex="-1">Sony internship</button>
+    </div>
 
-      <h4>Bell</h4>
-      <ul>
-        <li>Led full-scale <b>migration architecture</b> from Digitek to ServiceNow — data model mapping, workflow redesign and phased cutover for 100% of legacy users.</li>
-        <li>Recreated UI and business logic with UI Builder, Client Scripts, Business Rules and Script Includes at <b>&gt;95% functional parity</b>.</li>
-        <li>Built REST integrations to sync external systems, reducing manual data entry by ~60%.</li>
-        <li>Built a dynamic orchestration framework with Flow Designer + Scripted Actions routing inputs to ITSM/CSM modules.</li>
-        <li>Integrated <b>RPA automation</b>, eliminating 50%+ manual touchpoints, with robust error handling, logging and retries.</li>
-      </ul>
-
-      <h4>Valmet</h4>
-      <ul>
-        <li>Optimized ServiceNow workflows in JavaScript — 20% faster performance, 15% less downtime.</li>
-        <li>Engineered Incident, Problem and Change Management, increasing reliability by 15%.</li>
-        <li>Automated workflows cut manual process time by 35%; a self-service portal raised portal usage by 30%.</li>
-        <li>Worked on Virtual Agent and NLU integration models to reduce agent workload.</li>
-      </ul>
-
-      <h4>Now Migration · TelecoNow · Internal</h4>
-      <ul>
-        <li>Developed data migration features from Remedy to ServiceNow; delivered ITIL apps with a 10% efficiency gain.</li>
-        <li>Built a custom predictive flow for product orders that summarizes likely fallouts and surfaces earlier remedies to agents.</li>
-        <li>POCs across ServiceNow — UI actions/policies, client scripting, form design, workflows and business rules.</li>
+    <div class="panel" role="tabpanel" id="p-total" aria-labelledby="t-total">
+      <div>
+        <h3>GenAI for ITSM</h3>
+        <div class="when">CGI, for TotalEnergies</div>
+        <ul>
+          <li>Implemented Now Assist Skill Kit to extend ITSM with GenAI workflows across Incident, Request and Knowledge Management.</li>
+          <li>Designed custom AI skills for intent detection, ticket summarization and auto-solution recommendations.</li>
+          <li>Integrated Virtual Agent with GenAI services.</li>
+          <li>Built AI enrichment pipelines using enhanced descriptions and contextual search to classify and route tickets.</li>
+          <li>Optimized ITSM processes and AI execution flows, improving SLA compliance and MTTR.</li>
+        </ul>
+      </div>
+      <ul class="meters">
+        <li><div class="row">L1 tickets auto-resolved <b>30–40%</b></div><div class="bar"><i data-w="40"></i></div></li>
+        <li><div class="row">Faster time to resolution <b>35%</b></div><div class="bar"><i data-w="35"></i></div></li>
+        <li><div class="row">More first-contact resolutions <b>25%</b></div><div class="bar"><i data-w="25"></i></div></li>
+        <li><div class="row">Better routing accuracy <b>25%</b></div><div class="bar"><i data-w="25"></i></div></li>
+        <li><div class="row">Lower cost <b>20%</b></div><div class="bar"><i data-w="20"></i></div></li>
       </ul>
     </div>
 
-    <div class="job">
-      <h3>Intern — Sony India Software Centre</h3>
-      <div class="when">Jan 2022 – June 2022</div>
-      <ul>
-        <li>Developed a C++ model bridge between IoT devices and server.</li>
-        <li>Converted Python-based sources to C++ and machine-level code.</li>
-        <li>Helped bridge IoT devices to Google's IFTTT; integrated voice and scheduled commands.</li>
+    <div class="panel" role="tabpanel" id="p-bell" aria-labelledby="t-bell" hidden>
+      <div>
+        <h3>Digitek to ServiceNow migration</h3>
+        <div class="when">CGI, for Bell</div>
+        <ul>
+          <li>Led the full migration architecture: data model mapping, workflow redesign and a phased cutover strategy.</li>
+          <li>Recreated Digitek's UI and business logic with UI Builder, Client Scripts, Business Rules and Script Includes.</li>
+          <li>Built REST integrations to ingest and sync external system data.</li>
+          <li>Built a dynamic orchestration framework with Flow Designer and Scripted Actions that routes any input to the right ITSM/CSM module.</li>
+          <li>Integrated RPA bots for repetitive, rule-based tasks, with error handling, logging and retries throughout.</li>
+        </ul>
+      </div>
+      <ul class="meters">
+        <li><div class="row">Legacy users migrated <b>100%</b></div><div class="bar"><i data-w="100"></i></div></li>
+        <li><div class="row">Functional parity kept <b>95%+</b></div><div class="bar"><i data-w="95"></i></div></li>
+        <li><div class="row">Less manual data entry <b>60%</b></div><div class="bar"><i data-w="60"></i></div></li>
+        <li><div class="row">Manual touchpoints removed <b>50%+</b></div><div class="bar"><i data-w="50"></i></div></li>
       </ul>
     </div>
 
-    <div class="job">
-      <h3>B.Tech, Computer Science &amp; Engineering — IIIT Dharwad</h3>
-      <div class="when">2018 – 2022</div>
+    <div class="panel" role="tabpanel" id="p-valmet" aria-labelledby="t-valmet" hidden>
+      <div>
+        <h3>Workflow and portal optimization</h3>
+        <div class="when">CGI, for Valmet</div>
+        <ul>
+          <li>Optimized ServiceNow workflows in JavaScript.</li>
+          <li>Engineered the Incident, Problem and Change Management modules.</li>
+          <li>Automated workflows and scripts, cutting manual work and human error.</li>
+          <li>Designed a self-service portal that took load off the IT support team.</li>
+          <li>Worked on Virtual Agent and NLU integration models to reduce agent workload.</li>
+        </ul>
+      </div>
+      <ul class="meters">
+        <li><div class="row">Less manual process time <b>35%</b></div><div class="bar"><i data-w="35"></i></div></li>
+        <li><div class="row">More portal usage <b>30%</b></div><div class="bar"><i data-w="30"></i></div></li>
+        <li><div class="row">Faster system performance <b>20%</b></div><div class="bar"><i data-w="20"></i></div></li>
+        <li><div class="row">Less downtime <b>15%</b></div><div class="bar"><i data-w="15"></i></div></li>
+        <li><div class="row">More reliable <b>15%</b></div><div class="bar"><i data-w="15"></i></div></li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-more" aria-labelledby="t-more" hidden>
+      <div>
+        <h3>Now Migration and TelecoNow</h3>
+        <div class="when">CGI</div>
+        <ul>
+          <li>Built data migration features from Remedy to ServiceNow and shipped ITIL process apps, raising operational efficiency by 10%.</li>
+          <li>Built a predictive flow for product orders that summarizes likely fallouts from past cases and hands agents earlier remedies.</li>
+          <li>Customized user portal pages, flows and rules for an end-to-end order process.</li>
+          <li>Ran internal POCs with UI actions, UI policies, client scripting, form design, workflows and business rules.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-sony" aria-labelledby="t-sony" hidden>
+      <div>
+        <h3>IoT bridge in C++</h3>
+        <div class="when">Sony India Software Centre, Jan–Jun 2022</div>
+        <ul>
+          <li>Developed a C++ model bridge between IoT devices and the server.</li>
+          <li>Converted Python sources to C++ and machine-level code.</li>
+          <li>Helped bridge IoT devices to IFTTT and integrated voice and scheduled commands.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>1 Download Manager</h3>
-        <p>Free download manager for Android and Windows — direct links, YouTube, torrents and free media libraries in one queue.</p>
-        <ul><li>Segmented, resumable HTTP downloads</li><li>YouTube playlists &amp; audio extraction</li><li>Torrents, Internet Archive browser, browser extensions</li></ul>
-        <div class="meta"><span class="tag">Kotlin</span><a href="https://github.com/RDK456/1-download-manager" target="_blank" rel="noopener">GitHub →</a></div>
-      </article>
-      <article class="card">
-        <h3>AppDash</h3>
-        <p>See every app on your PC or phone — installed, actually used, size, and available updates.</p>
-        <ul><li>Usage tiers from launch history</li><li>Updates via winget &amp; Chocolatey</li><li>Disk breakdown by file type; Android app too</li></ul>
-        <div class="meta"><span class="tag">.NET · Android</span><a href="https://github.com/RDK456/appDash" target="_blank" rel="noopener">GitHub →</a></div>
-      </article>
-      <article class="card">
-        <h3>ThermalScope</h3>
-        <p>Portable Windows dashboard for real-time CPU/GPU load, temperatures, clocks and power.</p>
-        <ul><li>LibreHardwareMonitor sensor access</li><li>Built-in DirectX 11/12 FPS readout</li><li>Adjustable refresh intervals</li></ul>
-        <div class="meta"><span class="tag">C# · .NET 8</span><a href="https://github.com/RDK456/ThermalScope" target="_blank" rel="noopener">GitHub →</a></div>
-      </article>
-      <article class="card">
-        <h3>Consult — Live Consultation</h3>
-        <p>Single-page app for consulting doctors, built during my B.Tech.</p>
-        <ul><li>Role-based, cross-platform UI</li><li>Live chat alerts</li><li>Predicts health conditions from symptoms</li></ul>
-        <div class="meta"><span class="tag">HTML/CSS · Python · MongoDB</span></div>
-      </article>
-      <article class="card">
-        <h3>Bookmark</h3>
-        <p>A JavaScript bookmark manager for saving and organizing links.</p>
-        <ul></ul>
-        <div class="meta"><span class="tag">JavaScript</span><a href="https://github.com/RDK456/bookmark" target="_blank" rel="noopener">GitHub →</a></div>
-      </article>
+    <p class="lede">Tools I build outside work. Open one for details.</p>
+    <div class="filters" id="filters">
+      <button aria-pressed="true" data-f="all">All</button>
+      <button aria-pressed="false" data-f="windows">Windows</button>
+      <button aria-pressed="false" data-f="android">Android</button>
+      <button aria-pressed="false" data-f="web">Web</button>
     </div>
+
+    <details class="proj" data-p="android windows">
+      <summary><div><h3>1 Download Manager</h3><p>Links, YouTube, torrents and free media libraries in one download queue.</p></div><div class="plat"><span>Android</span><span>Windows</span></div><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="body">
+        <div>
+          <ul><li>Segmented HTTP downloads with pause, resume, retry and speed limit</li><li>YouTube videos, playlists and channels, or audio as M4A, MP3, Opus or WAV</li><li>Magnet links and .torrent files with file selection</li><li>Internet Archive browser and Chrome / Firefox extensions</li></ul>
+          <div class="stack">Kotlin</div>
+        </div>
+        <a class="btn" href="https://github.com/RDK456/1-download-manager" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </details>
+
+    <details class="proj" data-p="windows android">
+      <summary><div><h3>AppDash</h3><p>See every app on your PC or phone: installed, used, size, updates.</p></div><div class="plat"><span>Windows</span><span>Android</span></div><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="body">
+        <div>
+          <ul><li>Installed and portable apps with sizes, repair and uninstall</li><li>Usage tiers from Windows launch history, bulk-remove rarely used apps</li><li>Updates through winget and Chocolatey</li><li>Disk breakdown by file type with the largest files</li></ul>
+          <div class="stack">.NET 8 and Android</div>
+        </div>
+        <a class="btn" href="https://github.com/RDK456/appDash" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </details>
+
+    <details class="proj" data-p="windows">
+      <summary><div><h3>ThermalScope</h3><p>Portable hardware monitor with a built-in DirectX FPS readout.</p></div><div class="plat"><span>Windows</span></div><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="body">
+        <div>
+          <ul><li>Live CPU and GPU load, temperatures, clocks and power</li><li>Every detected sensor listed, including unavailable readings</li><li>FPS monitoring for DirectX 11/12 games</li></ul>
+          <div class="stack">C#, .NET 8, LibreHardwareMonitor</div>
+        </div>
+        <a class="btn" href="https://github.com/RDK456/ThermalScope" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </details>
+
+    <details class="proj" data-p="web">
+      <summary><div><h3>Consult</h3><p>Live doctor consultation app, built during my B.Tech.</p></div><div class="plat"><span>Web</span></div><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="body">
+        <div>
+          <ul><li>Single-page app for consulting doctors, with views for each user role</li><li>Alerts for live chats</li><li>Predicts patients' health conditions from symptoms</li></ul>
+          <div class="stack">HTML, CSS, Python, MongoDB</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="proj" data-p="web">
+      <summary><div><h3>Bookmark</h3><p>A small manager for saving and organizing links.</p></div><div class="plat"><span>Web</span></div><span class="plus" aria-hidden="true">+</span></summary>
+      <div class="body">
+        <div><div class="stack">JavaScript</div></div>
+        <a class="btn" href="https://github.com/RDK456/bookmark" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </details>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <div class="cols">
-      <div>
-        <h3>Platforms &amp; languages</h3>
-        <div class="chips"><span>ServiceNow</span><span>Now Assist</span><span>Virtual Agent</span><span>Flow Designer</span><span>UI Builder</span><span>REST integrations</span><span>RPA</span><span>JavaScript</span><span>C++</span><span>Kotlin</span><span>C# / .NET</span><span>Full-stack</span></div>
-      </div>
-      <div>
-        <h3>Tools</h3>
-        <div class="chips"><span>ServiceNow</span><span>BMC</span><span>Android Studio</span><span>Git</span></div>
-        <h3 style="margin-top:24px">Languages</h3>
-        <div class="chips"><span>English</span><span>Tamil</span><span>Telugu</span><span>Kannada</span></div>
-      </div>
+    <p class="lede">ServiceNow CSA and CAD certified.</p>
+    <div class="skillgrid">
+      <div><h3>ServiceNow</h3><ul><li>Now Assist and Skill Kit</li><li>Virtual Agent and NLU</li><li>Predictive Intelligence</li><li>Flow Designer and Scripted Actions</li><li>UI Builder and service portals</li><li>REST integrations and RPA</li></ul></div>
+      <div><h3>Code and tools</h3><ul><li>JavaScript</li><li>C++</li><li>Kotlin and Android Studio</li><li>C# and .NET</li><li>Full-stack web</li><li>BMC and Git</li></ul></div>
+      <div><h3>Certifications</h3><ul><li>Certified System Administrator</li><li>Certified Application Developer</li><li>Virtual Agent</li><li>Predictive Intelligence</li><li>Flow Designer</li><li>Java Professional, Python</li></ul></div>
     </div>
-    <h3 class="muted" style="font-size:16px;font-weight:500;margin:32px 0 12px">Certifications</h3>
-    <div class="chips cert"><span>ServiceNow CSA</span><span>ServiceNow CAD</span><span>ServiceNow Virtual Agent</span><span>ServiceNow Predictive Intelligence</span><span>ServiceNow Flow Designer</span><span>Java Professional</span><span>Python Beginners</span></div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="muted">Based in Bangalore — open to opportunities and collaborations.</p>
-    <a class="btn primary" href="mailto:dhanushr2000@gmail.com">dhanushr2000@gmail.com</a>
-    <a class="btn" href="Dhanush-Kumar-Resume.pdf" download>Download resume</a>
-    <a class="btn" href="https://www.linkedin.com/in/dhanush-kumar-3b218019a/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://github.com/RDK456" target="_blank" rel="noopener">GitHub</a>
+  <section id="contact" class="request">
+    <aside>
+      <h2>Open a request</h2>
+      <p>Job opportunity, collaboration or a question: log it here and it lands in my inbox. I speak English, Tamil, Telugu and Kannada.</p>
+      <a href="mailto:dhanushr2000@gmail.com">dhanushr2000@gmail.com</a>
+      <a href="https://www.linkedin.com/in/dhanush-kumar-3b218019a/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/RDK456" target="_blank" rel="noopener">GitHub</a>
+    </aside>
+    <!-- ponytail: FormSubmit.co relays to email, no backend; swap for Formspree if you need a dashboard -->
+    <form class="ticket" id="ticket" action="https://formsubmit.co/dhanushr2000@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New request from rdk456.github.io">
+      <input type="hidden" name="_next" value="https://rdk456.github.io/?sent=1#contact">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label>Name<input name="name" required maxlength="100" autocomplete="name"></label>
+      <label>Email<input type="email" name="email" required maxlength="200" autocomplete="email"></label>
+      <label class="full">Request type
+        <select name="type"><option>Job opportunity</option><option>Project collaboration</option><option>Question</option><option>Something else</option></select>
+      </label>
+      <label class="full">Details<textarea name="message" required rows="5" maxlength="5000"></textarea></label>
+      <div class="foot">
+        <button class="btn solid" type="submit">Submit request</button>
+        <span class="result" id="result" aria-live="polite"></span>
+      </div>
+    </form>
   </section>
-
-  <footer>© 2026 R Dhanush Kumar</footer>
 </main>
+
+<footer><div class="wrap">© 2026 R Dhanush Kumar</div></footer>
+
+<script>
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- virtual agent ---------- */
+const log = document.getElementById('log'), chips = document.getElementById('chips');
+const go = id => `<a href="#${id}">`;
+// ponytail: keyword intent matching, swap for a real LLM endpoint if visitors outgrow it
+const intents = [
+  { generic: 1, k: ['work', 'job', 'cgi', 'role', 'experience', 'current', 'servicenow'], chip: 'What do you work on?',
+    a: `I'm a Software Engineer at CGI in Bangalore with 4+ years in ServiceNow and ITSM. I build integrations, workflow automation, RPA and GenAI features with Now Assist, Skill Kit and Virtual Agent. ${go('experience')}See the client work</a>.` },
+  { k: ['ai', 'genai', 'now assist', 'skill kit', 'virtual agent', 'llm', 'intent', 'chatbot'], chip: 'What AI work have you done?',
+    a: `At TotalEnergies I built custom Now Assist skills for intent detection, ticket summarization and auto-solutions. They auto-resolve about 30–40% of L1 tickets, and wiring Virtual Agent into GenAI cut resolution time by ~35%.` },
+  { k: ['migrat', 'bell', 'integration', 'rest', 'rpa'], chip: 'Tell me about the migration',
+    a: `For Bell I led the Digitek to ServiceNow migration architecture for 100% of legacy users, at 95%+ functional parity. REST integrations cut manual data entry by ~60%, and RPA removed over half the manual touchpoints.` },
+  { k: ['project', 'build', 'side', 'github', 'app', 'android', 'windows'], chip: 'Show me side projects',
+    a: `Outside work I build native tools:<ul><li><b>1 Download Manager</b>: links, YouTube and torrents in one queue</li><li><b>AppDash</b>: see and clean up every app on PC or phone</li><li><b>ThermalScope</b>: hardware monitor with an FPS readout</li></ul>${go('projects')}Browse all projects</a>.` },
+  { k: ['skill', 'stack', 'tech', 'language', 'know', 'tool'], chip: 'What is your stack?',
+    a: `ServiceNow (Now Assist, Virtual Agent, Flow Designer, UI Builder, Predictive Intelligence), JavaScript, C++, Kotlin, C#/.NET, BMC and Git. ${go('skills')}Full list</a>.` },
+  { k: ['cert', 'csa', 'cad', 'qualif'], chip: 'Certifications?',
+    a: `ServiceNow Certified System Administrator (CSA) and Certified Application Developer (CAD), plus Virtual Agent, Predictive Intelligence and Flow Designer. Also Java Professional and Python.` },
+  { k: ['study', 'educat', 'college', 'degree', 'iiit', 'university', 'sony', 'intern'], chip: 'Education?',
+    a: `B.Tech in Computer Science from IIIT Dharwad (2018–2022). In my final semester I interned at Sony India Software Centre, building a C++ bridge between IoT devices and the server.` },
+  { k: ['resume', 'cv', 'download', 'pdf'], chip: 'Get the resume',
+    a: `Here you go: <a href="Dhanush-Kumar-Resume.pdf" download>download the resume (PDF)</a>.` },
+  { k: ['contact', 'hire', 'email', 'reach', 'talk', 'available', 'open'], chip: 'How do I reach you?',
+    a: `The quickest way is to ${go('contact')}open a request</a>, which goes straight to my inbox. You can also email <a href="mailto:dhanushr2000@gmail.com">dhanushr2000@gmail.com</a>.` },
+  { k: ['hi', 'hello', 'hey'], a: `Hi! Ask me anything about Dhanush's work, or pick a suggestion below.` },
+];
+const fallback = `I can answer questions about Dhanush's experience, AI work, projects, skills, certifications and how to reach him. Try one of the suggestions below.`;
+
+function match(q) {
+  q = ' ' + q.toLowerCase() + ' ';
+  let best = null, top = 0;
+  for (const it of intents) {
+    const score = it.k.filter(k => k.length < 4 ? q.includes(' ' + k + ' ') || q.includes(' ' + k + '?') : q.includes(k)).length - (it.generic ? .5 : 0);
+    if (score > top) { top = score; best = it; }
+  }
+  return best ? best.a : fallback;
+}
+function add(cls, html, isText) {
+  const m = document.createElement('div');
+  m.className = 'msg ' + cls;
+  isText ? (m.textContent = html) : (m.innerHTML = html);
+  log.append(m); log.scrollTop = log.scrollHeight;
+  return m;
+}
+function reply(html) {
+  const t = add('bot typing', '<span></span><span></span><span></span>');
+  setTimeout(() => { t.className = 'msg bot'; t.innerHTML = html; log.scrollTop = log.scrollHeight; }, still ? 0 : 550);
+}
+function ask(q) { add('you', q, true); reply(match(q)); }
+
+intents.filter(i => i.chip).forEach(i => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.textContent = i.chip;
+  b.onclick = () => ask(i.chip);
+  chips.append(b);
+});
+document.getElementById('ask').onsubmit = e => {
+  e.preventDefault();
+  const q = document.getElementById('q');
+  if (q.value.trim()) { ask(q.value.trim()); q.value = ''; }
+};
+reply(`Hi, I'm Dhanush's virtual agent. He builds these on ServiceNow for a living. What would you like to know?`);
+
+/* ---------- experience tabs ---------- */
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function fill(panel) {
+  panel.querySelectorAll('.bar i').forEach(i => { i.style.width = 0; requestAnimationFrame(() => requestAnimationFrame(() => i.style.width = i.dataset.w + '%')); });
+}
+function select(tab) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+  fill(document.getElementById(tab.getAttribute('aria-controls')));
+}
+tabs.forEach((t, i) => {
+  t.onclick = () => select(t);
+  t.onkeydown = e => {
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus(); }
+  };
+});
+new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { fill(document.querySelector('.panel:not([hidden])')); o.disconnect(); } }, { threshold: .3 })
+  .observe(document.getElementById('experience'));
+
+/* ---------- project filters ---------- */
+document.getElementById('filters').onclick = e => {
+  const f = e.target.dataset.f; if (!f) return;
+  document.querySelectorAll('#filters button').forEach(b => b.setAttribute('aria-pressed', b === e.target));
+  document.querySelectorAll('.proj').forEach(p => p.hidden = f !== 'all' && !p.dataset.p.includes(f));
+};
+
+/* ---------- request form ---------- */
+const form = document.getElementById('ticket'), result = document.getElementById('result');
+if (location.search.includes('sent=1')) { result.textContent = 'Request submitted. I\'ll reply by email.'; result.className = 'result ok'; }
+form.onsubmit = async e => {
+  e.preventDefault();
+  if (form._honey.value) return;
+  const btn = form.querySelector('button'); btn.disabled = true; result.className = 'result'; result.textContent = 'Submitting…';
+  try {
+    const r = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+    const j = await r.json();
+    if (!r.ok || String(j.success) !== 'true') throw new Error(j.message);
+    const id = 'REQ' + String(Date.now()).slice(-7);
+    result.className = 'result ok'; result.textContent = `${id} submitted. I'll reply to ${form.email.value}.`;
+    form.reset();
+  } catch {
+    result.textContent = 'The request didn\'t go through. Check your connection and try again, or email dhanushr2000@gmail.com.';
+  } finally { btn.disabled = false; }
+};
+
+/* ---------- resume date, from the last commit that touched the PDF ---------- */
+fetch('https://api.github.com/repos/RDK456/RDK456.github.io/commits?path=Dhanush-Kumar-Resume.pdf&per_page=1')
+  .then(r => r.json())
+  .then(c => { const d = new Date(c[0].commit.committer.date); document.getElementById('cv-date').textContent = 'Updated ' + d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }); })
+  .catch(() => {});
+</script>
 </body>
 </html>
