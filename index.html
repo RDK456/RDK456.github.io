@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhanush Kumar — Portfolio</title>
+<meta name="description" content="R Dhanush Kumar — Software Engineer at CGI, ServiceNow CSA & CAD certified, building GenAI-powered ITSM automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14; --surface: #151922; --border: #232a36;
+    --text: #e7ebf2; --muted: #8b95a7; --accent: #ff7a45;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f7f6f2; --surface: #fff; --border: #e3e0d8; --text: #1a1c22; --muted: #5f6573; --accent: #d9531e; }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: inherit; }
+  main { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
+  b { color: var(--text); font-weight: 500; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+  nav .links a { margin-left: 20px; text-decoration: none; color: var(--muted); font-size: 15px; }
+  nav .links a:hover { color: var(--text); }
+  .logo { font-family: "Space Grotesk"; font-weight: 700; text-decoration: none; }
+
+  .hero { display: flex; gap: 32px; align-items: center; padding: 64px 0 40px; }
+  .hero img { width: 128px; height: 128px; border-radius: 50%; border: 3px solid var(--accent); flex-shrink: 0; }
+  .hero .role { color: var(--accent); font-weight: 500; letter-spacing: .02em; }
+  .hero h1 { font-size: clamp(36px, 6vw, 58px); }
+  .hero p { color: var(--muted); max-width: 600px; margin: 12px 0 24px; font-size: 17px; }
+  .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; margin: 0 10px 10px 0; border: 1px solid var(--border); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 64px; }
+  .stats div { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .stats strong { display: block; font-family: "Space Grotesk"; font-size: 30px; color: var(--accent); }
+  .stats span { color: var(--muted); font-size: 14px; }
+
+  section { padding: 48px 0; border-top: 1px solid var(--border); }
+  section > h2 { font-size: 28px; margin-bottom: 28px; }
+  section > h2::before { content: "// "; color: var(--accent); }
+  .muted { color: var(--muted); }
+
+  .job { padding: 0 0 32px 24px; border-left: 2px solid var(--border); position: relative; }
+  .job::before { content: ""; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .job h3 { font-size: 21px; }
+  .job .when { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+  .job h4 { font-size: 15px; margin: 16px 0 6px; color: var(--accent); font-weight: 500; }
+  .job ul { color: var(--muted); font-size: 15px; padding-left: 18px; }
+  .job li { margin-bottom: 4px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; transition: transform .15s, border-color .15s; }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card h3 { font-size: 20px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 15px; }
+  .card ul { color: var(--muted); font-size: 14px; padding-left: 18px; margin: 10px 0 0; flex: 1; }
+  .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-size: 14px; }
+  .tag { font-size: 12px; padding: 3px 10px; border-radius: 99px; border: 1px solid var(--border); color: var(--muted); }
+  .meta a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .cols h3 { font-size: 16px; margin-bottom: 12px; color: var(--muted); font-weight: 500; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips span { background: var(--surface); border: 1px solid var(--border); padding: 6px 14px; border-radius: 8px; font-size: 15px; }
+  .chips.cert span { border-color: var(--accent); }
+
+  #contact p { margin-bottom: 20px; }
+  footer { padding: 40px 0 60px; color: var(--muted); font-size: 14px; text-align: center; }
+
+  @media (max-width: 720px) {
+    .hero { flex-direction: column; align-items: flex-start; padding: 32px 0 32px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .cols { grid-template-columns: 1fr; }
+    nav .links a { margin-left: 12px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav>
+    <a class="logo" href="#">dk.</a>
+    <div class="links"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+  </nav>
+
+  <header class="hero">
+    <img src="https://avatars.githubusercontent.com/u/67866546?v=4" alt="R Dhanush Kumar">
+    <div>
+      <div class="role">Software Engineer · ServiceNow · Bangalore</div>
+      <h1>R Dhanush Kumar</h1>
+      <p>B.Tech (CSE) graduate from IIIT Dharwad with 4+ years in ITSM and ServiceNow development. CSA &amp; CAD certified — I build integrations, workflow automation, RPA and GenAI solutions with Now Assist, Skill Kit and Virtual Agent. On the side, I ship native Windows and Android tools.</p>
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://www.linkedin.com/in/dhanush-kumar-3b218019a/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/RDK456" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div><strong>4+</strong><span>years in ServiceNow &amp; ITSM</span></div>
+    <div><strong>30–50%</strong><span>operational efficiency gains</span></div>
+    <div><strong>~35%</strong><span>lower MTTR with GenAI Virtual Agent</span></div>
+    <div><strong>7</strong><span>certifications</span></div>
+  </div>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="job">
+      <h3>Software Engineer — CGI, Bengaluru</h3>
+      <div class="when">July 2022 – Present</div>
+
+      <h4>TotalEnergies</h4>
+      <ul>
+        <li>Implemented <b>Now Assist Skill Kit</b> to extend ITSM with GenAI-powered workflows across Incident, Request and Knowledge Management.</li>
+        <li>Designed custom AI skills for intent detection, ticket summarization and auto-solutions — <b>~30–40% auto-resolution</b> of L1 tickets.</li>
+        <li>Integrated Virtual Agent with GenAI services, cutting <b>MTTR by ~35%</b> and lifting first contact resolution by ~25%.</li>
+        <li>Built AI enrichment pipelines with contextual search, improving classification and routing accuracy by ~25%.</li>
+        <li>Optimized ITSM and AI execution flows for <b>~20% cost reduction</b> and better SLA compliance.</li>
+      </ul>
+
+      <h4>Bell</h4>
+      <ul>
+        <li>Led full-scale <b>migration architecture</b> from Digitek to ServiceNow — data model mapping, workflow redesign and phased cutover for 100% of legacy users.</li>
+        <li>Recreated UI and business logic with UI Builder, Client Scripts, Business Rules and Script Includes at <b>&gt;95% functional parity</b>.</li>
+        <li>Built REST integrations to sync external systems, reducing manual data entry by ~60%.</li>
+        <li>Built a dynamic orchestration framework with Flow Designer + Scripted Actions routing inputs to ITSM/CSM modules.</li>
+        <li>Integrated <b>RPA automation</b>, eliminating 50%+ manual touchpoints, with robust error handling, logging and retries.</li>
+      </ul>
+
+      <h4>Valmet</h4>
+      <ul>
+        <li>Optimized ServiceNow workflows in JavaScript — 20% faster performance, 15% less downtime.</li>
+        <li>Engineered Incident, Problem and Change Management, increasing reliability by 15%.</li>
+        <li>Automated workflows cut manual process time by 35%; a self-service portal raised portal usage by 30%.</li>
+        <li>Worked on Virtual Agent and NLU integration models to reduce agent workload.</li>
+      </ul>
+
+      <h4>Now Migration · TelecoNow · Internal</h4>
+      <ul>
+        <li>Developed data migration features from Remedy to ServiceNow; delivered ITIL apps with a 10% efficiency gain.</li>
+        <li>Built a custom predictive flow for product orders that summarizes likely fallouts and surfaces earlier remedies to agents.</li>
+        <li>POCs across ServiceNow — UI actions/policies, client scripting, form design, workflows and business rules.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>Intern — Sony India Software Centre</h3>
+      <div class="when">Jan 2022 – June 2022</div>
+      <ul>
+        <li>Developed a C++ model bridge between IoT devices and server.</li>
+        <li>Converted Python-based sources to C++ and machine-level code.</li>
+        <li>Helped bridge IoT devices to Google's IFTTT; integrated voice and scheduled commands.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>B.Tech, Computer Science &amp; Engineering — IIIT Dharwad</h3>
+      <div class="when">2018 – 2022</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>1 Download Manager</h3>
+        <p>Free download manager for Android and Windows — direct links, YouTube, torrents and free media libraries in one queue.</p>
+        <ul><li>Segmented, resumable HTTP downloads</li><li>YouTube playlists &amp; audio extraction</li><li>Torrents, Internet Archive browser, browser extensions</li></ul>
+        <div class="meta"><span class="tag">Kotlin</span><a href="https://github.com/RDK456/1-download-manager" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+      <article class="card">
+        <h3>AppDash</h3>
+        <p>See every app on your PC or phone — installed, actually used, size, and available updates.</p>
+        <ul><li>Usage tiers from launch history</li><li>Updates via winget &amp; Chocolatey</li><li>Disk breakdown by file type; Android app too</li></ul>
+        <div class="meta"><span class="tag">.NET · Android</span><a href="https://github.com/RDK456/appDash" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+      <article class="card">
+        <h3>ThermalScope</h3>
+        <p>Portable Windows dashboard for real-time CPU/GPU load, temperatures, clocks and power.</p>
+        <ul><li>LibreHardwareMonitor sensor access</li><li>Built-in DirectX 11/12 FPS readout</li><li>Adjustable refresh intervals</li></ul>
+        <div class="meta"><span class="tag">C# · .NET 8</span><a href="https://github.com/RDK456/ThermalScope" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+      <article class="card">
+        <h3>Consult — Live Consultation</h3>
+        <p>Single-page app for consulting doctors, built during my B.Tech.</p>
+        <ul><li>Role-based, cross-platform UI</li><li>Live chat alerts</li><li>Predicts health conditions from symptoms</li></ul>
+        <div class="meta"><span class="tag">HTML/CSS · Python · MongoDB</span></div>
+      </article>
+      <article class="card">
+        <h3>Bookmark</h3>
+        <p>A JavaScript bookmark manager for saving and organizing links.</p>
+        <ul></ul>
+        <div class="meta"><span class="tag">JavaScript</span><a href="https://github.com/RDK456/bookmark" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="cols">
+      <div>
+        <h3>Platforms &amp; languages</h3>
+        <div class="chips"><span>ServiceNow</span><span>Now Assist</span><span>Virtual Agent</span><span>Flow Designer</span><span>UI Builder</span><span>REST integrations</span><span>RPA</span><span>JavaScript</span><span>C++</span><span>Kotlin</span><span>C# / .NET</span><span>Full-stack</span></div>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <div class="chips"><span>ServiceNow</span><span>BMC</span><span>Android Studio</span><span>Git</span></div>
+        <h3 style="margin-top:24px">Languages</h3>
+        <div class="chips"><span>English</span><span>Tamil</span><span>Telugu</span><span>Kannada</span></div>
+      </div>
+    </div>
+    <h3 class="muted" style="font-size:16px;font-weight:500;margin:32px 0 12px">Certifications</h3>
+    <div class="chips cert"><span>ServiceNow CSA</span><span>ServiceNow CAD</span><span>ServiceNow Virtual Agent</span><span>ServiceNow Predictive Intelligence</span><span>ServiceNow Flow Designer</span><span>Java Professional</span><span>Python Beginners</span></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="muted">Based in Bangalore — open to opportunities and collaborations.</p>
+    <a class="btn primary" href="mailto:dhanushr2000@gmail.com">dhanushr2000@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/dhanush-kumar-3b218019a/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/RDK456" target="_blank" rel="noopener">GitHub</a>
+  </section>
+
+  <footer>© 2026 R Dhanush Kumar</footer>
+</main>
+</body>
+</html>
